@@ -1,0 +1,56 @@
+= form_for(@record) do |f|
+  %table.rec_table
+    %tr
+      %td.right{:width=>'20%'}
+        %em
+          *
+        收支日期：
+      %td
+        =f.text_field :date, :value=>defaultDate, :class=>'Wdate', :readonly=>'readonly', :onfocus=>"WdatePicker({lang:'zh-cn', skin:'default', startDate:''})"
+    %tr
+      %td.right 备注：
+      %td
+        =f.text_field :remark
+
+    %tr
+      %td.right
+        %em
+          *
+        收支项目：
+      %td
+        = radio_button_tag 'record_type', 'income', false
+        收入
+        = f.collection_select :category_id, Category.income.first.categories, :id, :name
+    %tr
+      %td
+      %td
+        = radio_button_tag 'record_type', 'outlay', true
+        支出
+        = f.collection_select :category_id, Category.outlay.first.categories, :id, :name
+    %tr
+      %td.right
+        %em
+          *
+        金额：
+      %td
+        =f.text_field :fee
+    %tr
+      %td
+      %td
+        =f.submit "提交", :class=>'submit'
+
+:javascript
+  $('input[type=radio]').each(function(){
+    $(this).click(function(){switchCate(this)})
+  })
+
+  function switchCate(obj){
+    if(obj.value == 'income'){
+      $('select').get(0).name = 'record[category_id]'
+      $('select').get(1).name = ''
+    }
+    else{
+      $('select').get(1).name = 'record[category_id]'
+      $('select').get(0).name = ''
+    }
+  }

@@ -1,0 +1,18 @@
+!!! XML
+!!!
+%head
+  %title 家庭财务管理
+  =stylesheet_link_tag "application"
+  =javascript_include_tag "application"
+  =javascript_include_tag "/My97DatePicker/WdatePicker"
+  =csrf_meta_tags
+%body
+  #header
+    .header_content
+      %span 家庭理财系统
+
+  .container_12
+    #tabs4= render_navigation
+    =yield
+
+  #footer

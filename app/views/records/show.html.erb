@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Fee:</b>
+  <%= @record.fee %>
+</p>
+
+<p>
+  <b>Category:</b>
+  <%= @record.category %>
+</p>
+
+<p>
+  <b>Remark:</b>
+  <%= @record.remark %>
+</p>
+
+
+<%= link_to 'Edit', edit_record_path(@record) %> |
+<%= link_to 'Back', records_path %>

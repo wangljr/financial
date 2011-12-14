@@ -1,0 +1,33 @@
+.grid_12.subtitle
+  =link_to '收支项目管理', 'javascript:void(0)', :class=>'current'
+  %span.spline
+    |
+  =link_to '新增收支项目', records_path
+
+.grid_6
+  %table.list
+    %tr.title
+      %td.center{:style=>'width:80%'} 收入项目
+      %td.center 操作
+    -@income.categories.each do |category|
+      %tr.content
+        %td
+          =category.name
+        %td.center
+          =image_tag 'edit.png'
+          =image_tag 'delete.png'
+
+.grid_6
+  %table.list
+    %tr.title
+      %td.center{:style=>'width:80%'} 支出项目
+      %td.center 操作
+    -@outlay.categories.each do |category|
+      %tr.content{:style=>'background-color:#FEE4E2'}
+        %td
+          =category.name
+        %td.center
+          =image_tag 'edit.png'
+          =image_tag 'delete.png'
+
+

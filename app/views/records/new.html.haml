@@ -1,0 +1,26 @@
+=javascript_include_tag "records"
+.grid_12
+  -unless notice.nil?
+    .notice
+      =image_tag "tick.png"
+      %p
+        添加记录成功， 点击这里查看
+        =link_to '本月账单', 'javascript:void(0)'
+
+  -if @record.errors.any?
+    .eInfo2
+      %ul
+        -@record.errors.messages.each do |msg|
+          %li
+            =msg
+
+  = render 'form'
+
+:javascript
+  if($('.notice').length !=0){
+    setTimeout('hideNotice()', 2500)
+  }
+
+  function hideNotice(){
+    $('.notice').slideToggle();
+  }

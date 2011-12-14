@@ -1,0 +1,33 @@
+.grid_12.subtitle
+  =link_to '账号列表', 'javascript:void(0)', :class=>'current'
+  %span.spline
+    |
+  =link_to '新增账号', records_path
+
+.grid_12
+  %table.list
+    %tr.title
+      %td 银行
+      %td{:width=>'30%'} 账号
+      %td 开户地
+      %td 余额
+      %td.center 操作
+      -@accounts.each do |account|
+        %tr.content
+          %td
+            =account.name
+          %td
+            =account.number
+          %td
+            =account.location
+          %td
+            = balance account
+          %td.center
+            =image_tag 'edit.png'
+            =image_tag 'delete.png'
+
+
+
+
+
+

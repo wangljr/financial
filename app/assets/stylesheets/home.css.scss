@@ -1,0 +1,172 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$white:#FFF;
+$full_width: 960px;
+$gray_d:#666;
+$gray_l:#909090;
+$green:#228B22;
+$red:#B22222;
+
+* {
+	margin: 0;
+	padding: 0;
+    color:$gray_d;
+}
+
+body {
+	margin:0;
+	padding:0;
+}
+
+h2 {
+	font: bold 14px Verdana, Arial, Helvetica, sans-serif;
+	color: #000;
+	margin: 0px;
+	padding: 0px 0px 0px 15px;
+}
+
+img {
+    border: none;
+}
+
+#header{
+  width:100%;
+  height:40px;
+  background-color:#4E94BB;
+  div{
+      width:960px;
+      margin: 0 auto;
+      height:100%;
+      padding-top:8px;
+      span{
+        color:$white;
+        font-weight:bold;
+        display:block;
+        font-size:18px;
+      }
+  }
+}
+
+.subtitle{
+  height:20px;
+  padding-top:12px;
+  font-weight:bold;
+  border:none;
+  border-width:1px;
+  border-color:$gray_l;
+  border-bottom-style:dotted;
+  a{
+    color:#4E94BB;
+    text-decoration:none;
+  }
+  a:hover{
+    text-decoration:underline;
+  }
+  a.current{
+    color:$gray_d;
+    cursor:default
+  }
+  a.current:hover{
+    text-decoration:none;
+  }
+  .spline{
+    margin:4px;
+    color:$gray_d
+  }
+}
+
+table.list{
+    width:100%;
+    margin-top:12px;
+    border-collapse:collapse;
+
+    td{
+      color:$gray_d;
+      height:30px;
+      vertical-align:middle;
+      padding-left:4px;
+      border-bottom:1px solid #F0F0F0;
+    }
+
+    .title td{
+      font-weight:bold;
+    }
+
+    .content{
+      background-color:#F0F8FF;
+    }
+}
+
+table.rec_table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+    td{
+      font-weight:bold;
+      color:$gray_d;
+      padding:6px;
+    }
+}
+
+.right{
+  text-align:right
+}
+
+.center{
+      text-align:center;
+}
+
+em{
+  font-weight:bold;
+  color:red
+}
+
+.Wdate{
+  padding-left:2px;
+  width:90px;
+}
+
+input{
+  //color:$gray_d;
+}
+
+.submit{
+  width:64px;
+  height:22px;
+  text-align:center;
+  cursor:pointer;
+  font-weight:bold;
+  font-family:Microsoft YaHei;
+  background:url('button1.gif') no-repeat center;
+  color:#2F4F4F;
+  border:none;
+}
+
+.edit{
+  background:url('edit.png') no-repeat center;
+  vertical-align:middle;
+  text-decoration:none;
+  &:hover{
+    text-decoration:underline
+  }
+}
+
+.delete{
+  background:url('delete.png') no-repeat center;
+  vertical-align:middle;
+  text-decoration:none;
+  &:hover{
+    text-decoration:underline
+  }
+}
+
+.green{
+  color:$green;
+  font-family:verdana;
+}
+.red{
+  color:$red;
+  font-family:verdana;
+}
+

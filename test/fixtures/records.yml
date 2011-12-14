@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fee: 1.5
+  category: 
+  remark: MyString
+
+two:
+  fee: 1.5
+  category: 
+  remark: MyString
