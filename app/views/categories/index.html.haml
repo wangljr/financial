@@ -5,29 +5,50 @@
   =link_to '新增收支项目', records_path
 
 .grid_6
-  %table.list
-    %tr.title
-      %td.center{:style=>'width:80%'} 收入项目
-      %td.center 操作
-    -@income.categories.each do |category|
-      %tr.content
-        %td
-          =category.name
-        %td.center
-          =image_tag 'edit.png'
-          =image_tag 'delete.png'
+  -unless @income.nil? || @income.categories.empty?
+    %table.list
+      %tr.title
+        %td.center{:style=>'width:80%'} 收入项目
+        %td.center 操作
+      -@income.categories.each do |category|
+        %tr.content
+          %td
+            =category.name
+          %td.center
+            =image_tag 'edit.png'
+            =image_tag 'delete.png'
+  -else
+    .eInfo
+      =image_tag 'exclamation.png'
+      %p
+        %span 无收入项目
+        %br
+        %span 请点击
+        =link_to '新增收支项目', new_record_path
+        %span 添加
+
 
 .grid_6
-  %table.list
-    %tr.title
-      %td.center{:style=>'width:80%'} 支出项目
-      %td.center 操作
-    -@outlay.categories.each do |category|
-      %tr.content{:style=>'background-color:#FEE4E2'}
-        %td
-          =category.name
-        %td.center
-          =image_tag 'edit.png'
-          =image_tag 'delete.png'
+  -unless @outlay.nil? || @outlay.categories.empty?
+    %table.list
+      %tr.title
+        %td.center{:style=>'width:80%'} 支出项目
+        %td.center 操作
+      -@outlay.categories.each do |category|
+        %tr.content{:style=>'background-color:#FEE4E2'}
+          %td
+            =category.name
+          %td.center
+            =image_tag 'edit.png'
+            =image_tag 'delete.png'
+  -else
+    .eInfo
+      =image_tag 'exclamation.png'
+      %p
+        %span 无支出项目
+        %br
+        %span 请点击
+        =link_to '新增收支项目', new_record_path
+        %span 添加
 
 
