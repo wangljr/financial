@@ -1,0 +1,54 @@
+.grid_12.subtitle
+  =link_to '本月收支', records_path
+  %span.spline
+    |
+  =link_to '按月份查看', 'javascript:void(0)', :class=>'current'
+  %span.spline
+    |
+  =link_to '按收支项目查看', records_path
+
+.grid_12
+
+.grid_12
+  -unless @records.empty?
+    %table.list
+      %tr.title
+        %td{:width=>'20%'} 收支项目
+        %td{:width=>'10%'} 日期
+        %td{:width=>'20%'} 说明
+        %td{:width=>'20%'} 收入金额
+        %td{:width=>'20%'} 支出金额
+        %td{:width=>'10%'} 操作
+      -@records.each do |record|
+        %tr.content
+          %td
+            =record.category.name
+          %td
+            =record.date
+          %td
+            =record.remark
+          %td
+            %span.green
+              =income record
+          %td
+            %span.red
+              =outlay record
+          %td
+            =link_to '&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, 'javascript:void(0)', :class=>'edit', :title => '编辑账单'
+            =link_to '&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, record, :class=>'delete', :title => '删除账单', :method => 'delete', :confirm => '确定删除？'
+
+  -else
+    .eInfo
+      =image_tag 'exclamation.png'
+      %p
+        %span 本月无收支记录
+        %br
+        %span 请点击
+        =link_to '新增记录', new_record_path
+        %span 添加
+
+
+
+
+
+
