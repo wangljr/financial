@@ -6,7 +6,7 @@
           *
         收支日期：
       %td
-        =f.text_field :date, :value=>defaultDate, :class=>'Wdate', :readonly=>'readonly', :onfocus=>"WdatePicker({lang:'zh-cn', skin:'default', startDate:''})"
+        =f.text_field :date, :value=>defaultDate, :class=>'Wdate', :readonly=>'readonly', :onfocus=>"WdatePicker({lang:'zh-cn'})"
     %tr
       %td.right 备注：
       %td
@@ -20,13 +20,13 @@
       %td
         = radio_button_tag 'record_type', 'income', false
         收入
-        = f.collection_select :category_id, Category.income.first.categories, :id, :name
+        = f.collection_select :category_id, cate_list(Category.income.first.categories), :id, :name
     %tr
       %td
       %td
         = radio_button_tag 'record_type', 'outlay', true
         支出
-        = f.collection_select :category_id, Category.outlay.first.categories, :id, :name
+        = f.collection_select :category_id, cate_list(Category.outlay.first.categories), :id, :name
     %tr
       %td.right
         %em

@@ -1,11 +1,22 @@
 .grid_12.subtitle
-  =link_to '本月收支', 'javascript:void(0)', :class=>'current'
+  =link_to '本月收支', records_path, :class=>'current'
   %span.spline
     |
-  =link_to '按月份查看', records_path
+  =link_to '按月份查看', month_records_path
   %span.spline
     |
-  =link_to '按收支项目查看', records_path
+  =link_to '按收支项目查看', category_records_path
+
+.grid_12.subtitle
+  %span #{Time.now.strftime("%Y")}年#{Time.now.strftime("%m")}月合计
+  %div{:style=>'float:right'}
+    %span.green
+      收入：#{'￥ ' + income_sum(@records).to_s} &nbsp;&nbsp;
+    %span.red
+      支出：#{'￥ ' + outlay_sum(@records).to_s} &nbsp;&nbsp;
+    %span.blue
+      结余：#{'￥ ' + (income_sum(@records) - outlay_sum(@records)).to_s}
+
 
 .grid_12
   -unless @records.empty?
@@ -20,17 +31,15 @@
       -@records.each do |record|
         %tr.content
           %td
-            =record.category.name
+            =cate_name record.category
           %td
             =record.date
           %td
             =record.remark
           %td
-            %span.green
-              =income record
+            %span.green #{('￥ ' + income(record).to_s) unless income(record).nil?}
           %td
-            %span.red
-              =outlay record
+            %span.red #{('￥ ' + outlay(record).to_s) unless outlay(record).nil?}
           %td
             =link_to '&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, 'javascript:void(0)', :class=>'edit', :title => '编辑账单'
             =link_to '&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, record, :class=>'delete', :title => '删除账单', :method => 'delete', :confirm => '确定删除？'

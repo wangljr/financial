@@ -7,6 +7,7 @@ $gray_d:#666;
 $gray_l:#909090;
 $green:#228B22;
 $red:#B22222;
+$blue:#4E94BB;
 
 * {
 	margin: 0;
@@ -44,6 +45,7 @@ img {
         font-weight:bold;
         display:block;
         font-size:18px;
+        font-style:italic
       }
   }
 }
@@ -163,10 +165,11 @@ input{
 
 .green{
   color:$green;
-  font-family:verdana;
 }
 .red{
   color:$red;
-  font-family:verdana;
+}
+.blue{
+  color:$blue
 }
 

@@ -41,6 +41,17 @@
           %td.center
             =image_tag 'edit.png'
             =image_tag 'delete.png'
+        -unless category.categories.empty?
+          -category.categories.each do |sub_cate|
+            %tr.content{:style=>'background-color:#FEEEED'}
+              %td
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                =sub_cate.name
+              %td.center
+                =image_tag 'edit.png'
+                =image_tag 'delete.png'
+
+
   -else
     .eInfo
       =image_tag 'exclamation.png'

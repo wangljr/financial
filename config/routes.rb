@@ -1,5 +1,8 @@
 Financial::Application.routes.draw do
-  resources :records
+  resources :records do
+     get 'month', :on => :collection
+     get 'category', :on => :collection
+  end
 
   get "accounts/index"
 

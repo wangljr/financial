@@ -1,0 +1,25 @@
+.grid_12.subtitle
+  =link_to '本月收支', records_path
+  %span.spline
+    |
+  =link_to '按月份查看', month_records_path
+  %span.spline
+    |
+  =link_to '按收支项目查看', category_records_path, :class=>'current'
+
+.grid_12#filter
+  =select_tag "month", options_from_collection_for_select(Category.all, "id", "name")
+  从
+  =text_field_tag 'date_start', nil, :class=>'Wdate', :readonly=>'readonly', :onfocus=>"WdatePicker({lang:'zh-cn'})"
+  到
+  =text_field_tag 'date_end', nil, :class=>'Wdate', :readonly=>'readonly', :onfocus=>"WdatePicker({lang:'zh-cn'})"
+  %input.submit{:type=>'submit', :value=>'查看'}
+
+.grid_12
+
+
+
+
+
+
+

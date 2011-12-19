@@ -2,6 +2,14 @@ class RecordsController < ApplicationController
   respond_to :html, :js
 
   def index
+    @records = Record.all(:order=>'date desc')
+  end
+
+  def month
+    @records = Record.all
+  end
+
+  def category
     @records = Record.all
   end
 
@@ -44,8 +52,6 @@ class RecordsController < ApplicationController
     end
   end
 
-  # DELETE /records/1
-  # DELETE /records/1.json
   def destroy
     @record = Record.find(params[:id])
     @record.destroy
