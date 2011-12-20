@@ -1,13 +1,14 @@
 Financial::Application.routes.draw do
+  resources :categories do
+    get 'cate', :on => :member
+  end
+
   resources :records do
-     get 'month', :on => :collection
+    get 'month', :on => :collection
      get 'category', :on => :collection
   end
 
   get "accounts/index"
-
-  get "categories/index"
-
   get "home/index"
 
   # The priority is based upon order of creation:

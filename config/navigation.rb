@@ -78,9 +78,11 @@
 SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.item :menu_home, '<span>首页</span>', '/home/index'
-    primary.item :menu_rec, '<span>我的账本</span>', '/records'
-    primary.item :menu_exp, '<span>新增记录</span>', '/records/new'
-    primary.item :menu_exp_manage, '<span>收支项目管理</span>', '/categories/index'
+    primary.item :menu_rec, '<span>我的账本</span>', records_url, :highlights_on => lambda { ! @records.nil? }
+    primary.item :menu_exp, '<span>新增记录</span>', new_record_url, :highlights_on => /\/records\/new/
+    primary.item :menu_exp_manage, '<span>收支项目管理</span>', categories_url
     primary.item :menu_mybank, '<span>我的银行</span>', '/accounts/index'
+
+    primary.auto_highlight = true
   end
 end

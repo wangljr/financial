@@ -8,15 +8,10 @@
   =link_to '按收支项目查看', category_records_path
 
 .grid_12#filter
-  %span
-    月份
-    =text_field_tag 'month', defaultMonth, :class=>'Wdate', :readonly=>'readonly', :onfocus=>"WdatePicker({lang:'zh-cn', dateFmt:'yyyy-MM'})"
-    %input.submit{:type=>'submit', :value=>'查看'}
+  = form_tag month_records_path, :method => :get do
+    %span
+      月份
+      = text_field_tag 'month', @month, :class=>'Wdate', :readonly=>'readonly', :onfocus=>"WdatePicker({lang:'zh-cn', dateFmt:'yyyy-MM'})"
+      = submit_tag '查看', :class=>'submit', :name => nil
 
-.grid_12
-
-
-
-
-
-
+= render 'list'

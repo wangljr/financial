@@ -1,0 +1,47 @@
+.grid_12.subtitle
+  %span #{@month.split('-')[0]}年#{@month.split('-')[1]}月合计
+  %div{:style=>'float:right'}
+    %span.green
+      收入：#{'￥ ' + income_sum(@records).to_s} &nbsp;&nbsp;
+    %span.red
+      支出：#{'￥ ' + outlay_sum(@records).to_s} &nbsp;&nbsp;
+    %span.blue
+      结余：#{'￥ ' + (income_sum(@records) - outlay_sum(@records)).to_s}
+
+.grid_12
+  -unless @records.empty?
+    %table.list
+      %tr.title
+        %td{:width=>'20%'} 收支项目
+        %td{:width=>'10%'} 日期
+        %td{:width=>'20%'} 说明
+        %td{:width=>'20%'} 收入金额
+        %td{:width=>'20%'} 支出金额
+        %td{:width=>'10%'} 操作
+      -@records.each do |record|
+        %tr.content
+          %td
+            =cate_name record.category
+          %td
+            =record.date
+          %td
+            =record.remark
+          %td
+            %span.green #{('￥ ' + income(record).to_s) unless income(record).nil?}
+          %td
+            %span.red #{('￥ ' + outlay(record).to_s) unless outlay(record).nil?}
+          %td
+            =link_to '&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, edit_record_path(record), :class=>'edit', :title => '编辑账单'
+            =link_to '&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, record, :class=>'delete', :title => '删除账单', :method => 'delete', :confirm => '确定删除？'
+
+    = will_paginate @records
+
+  -else
+    .eInfo
+      =image_tag 'exclamation.png'
+      %p
+        %span 本月无收支记录
+        %br
+        %span 请点击
+        =link_to '新增记录', new_record_path
+        %span 添加

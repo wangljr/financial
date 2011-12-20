@@ -1,0 +1,45 @@
+= form_for(@category) do |f|
+  %table.rec_table
+    %tr
+      %td.right{:width=>'20%'}
+        %em
+          *
+        性质：
+      %td
+        =f.radio_button :category_id, 1
+        收入
+        &nbsp;&nbsp;&nbsp;
+        =f.radio_button :category_id, 2
+        支出
+
+    %tr
+      %td.right{:width=>'20%'}
+        %em
+          *
+        项目名称：
+      %td
+        =f.text_field :name
+    %tr
+      %td.right
+        从属于：
+      %td
+        = f.collection_select :category_id, Category.outlay.first.categories, :id, :name
+
+    %tr
+      %td
+      %td
+        =f.submit "提交", :class=>'submit'
+
+:javascript
+  $('input[type=radio]').click(function(){
+    changeCate(this.value)
+  })
+
+  function changeCate(id){
+    $.ajax({
+      url: "/categories/" + id + "/cate",
+      success: function(){
+        //alert("#{@options}")
+      }
+    });
+  }

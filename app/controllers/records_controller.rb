@@ -2,11 +2,13 @@ class RecordsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @records = Record.all(:order=>'date desc')
+    @month = Time.now.strftime("%Y-%m")
+    @records = Record.find_by_month(@month).paginate(:page => params[:page], :per_page => 15)
   end
 
   def month
-    @records = Record.all
+    @month = params[:month] || Time.now.strftime("%Y-%m")
+    @records = Record.find_by_month(@month).paginate(:page => params[:page], :per_page => 15)
   end
 
   def category
@@ -41,14 +43,10 @@ class RecordsController < ApplicationController
   def update
     @record = Record.find(params[:id])
 
-    respond_to do |format|
-      if @record.update_attributes(params[:record])
-        format.html { redirect_to @record, notice: 'Record was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @record.errors, status: :unprocessable_entity }
-      end
+    if @record.update_attributes(params[:record])
+      redirect_to edit_record_path(@record), notice: 'Record was successfully updated.'
+    else
+      render action: "edit"
     end
   end
 

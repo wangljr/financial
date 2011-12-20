@@ -25,11 +25,7 @@ module RecordsHelper
   end
 
   def defaultDate
-    Time.now.strftime("%Y-%m-%d")
-  end
-
-  def defaultMonth
-    Time.now.strftime("%Y-%m")
+    return @record.date.nil? ? Time.now.strftime("%Y-%m-%d") : @record.date
   end
 
   def cate_list categories
@@ -52,7 +48,6 @@ module RecordsHelper
     sum = 0
     unless records.nil? || records.empty?
       records.each do |record|
-        puts record.fee
         sum += income record unless income(record).nil?
       end
     end
