@@ -1,18 +1,25 @@
 =javascript_include_tag "/Highcharts-2.1.9/js/highcharts"
 .container_12
   .grid_6.subtitle
-    本月支出
+    %span
+      本月支出
+    .red{:style=>'float:right'}
+      总计： ￥ #{eval @sums.join('+')}
   .grid_6.subtitle
+    .blue{:style=>'float:right'}
+      总资产： ￥ #{eval @amounts.join('+')}
     银行信息
 
 .container_12
   .grid_6
     #outlay{:style=>"width:100%; height:350px; margin: 4px auto"}
+  .grid_6
+    #accounts{:style=>"width:100%; height:350px; margin: 4px auto"}
 
 :javascript
-  var chart;
-  $(function() {
-      chart = new Highcharts.Chart({
+  function outlay_chart(){
+    var outlay;
+    outlay = new Highcharts.Chart({
           chart: {
               renderTo: 'outlay',
               defaultSeriesType: 'column',
@@ -69,7 +76,72 @@
           text: ''
         }
       });
+  }
 
+  function accounts_chart(){
+    var outlay;
+    outlay = new Highcharts.Chart({
+          chart: {
+              renderTo: 'accounts',
+              defaultSeriesType: 'column',
+              margin: [ 20, 50, 50, 50]
+          },
+
+          xAxis: {
+              categories: #{@accounts},
+              labels: {
+                  rotation: -45,
+                  align: 'right',
+                  style: {
+                       font: 'normal 13px Microsoft YaHei'
+                  }
+              }
+          },
+          title: {
+              text:''
+          },
+          yAxis: {
+              min: 0,
+              title: {
+                  text: 'Total fee'
+              }
+          },
+          legend: {
+              enabled: false
+          },
+          tooltip: {
+              formatter: function() {
+                  return '<b>'+ this.x +'</b><br/>'+ '￥ '+ Highcharts.numberFormat(this.y, 2);
+              }
+          },
+          series: [{
+            name: 'fee',
+            data: #{@amounts},
+            dataLabels: {
+                enabled: true,
+                rotation: -0,
+                color: '#FFFFFF',
+                align: 'right',
+                x: -5,
+                y: 14,
+                formatter: function() {
+                    return this.y;
+                },
+                style: {
+                    font: 'bold 11px Verdana, sans-serif'
+                }
+            }
+        }],
+        credits:{
+          href: 'javascript:void(0)',
+          text: ''
+        }
+      });
+  }
+
+  $(function() {
+    outlay_chart()
+    accounts_chart()
 
   });
 
