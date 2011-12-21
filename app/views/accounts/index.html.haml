@@ -1,8 +1,14 @@
 .grid_12.subtitle
-  =link_to '账号列表', 'javascript:void(0)', :class=>'current'
+  =link_to '账号列表', accounts_path, :class=>'current'
   %span.spline
     |
-  =link_to '新增账号', records_path
+  =link_to '新增账号', new_account_path
+
+.grid_12.subtitle
+  %div{:style=>'float:right'}
+    %span.green
+      总资产： ￥ #{sum @accounts}
+
 
 .grid_12
   -unless @accounts.empty?
@@ -34,7 +40,7 @@
         %span 无银行账号
         %br
         %span 请点击
-        =link_to '新增账号', new_record_path
+        =link_to '新增账号', new_account_path
         %span 添加
 
 
