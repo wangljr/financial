@@ -8,7 +8,8 @@ Financial::Application.routes.draw do
      get 'category', :on => :collection
   end
 
-  get "accounts/index"
+  resources :accounts
+
   get "home/index"
 
   # The priority is based upon order of creation:
