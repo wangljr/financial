@@ -1,5 +1,12 @@
 class HomeController < ApplicationController
   def index
+   process_outlay
+   process_account
+
+  end
+
+  private
+  def process_outlay
     @outlays = []
     @sums = []
     Category.outlay.first.categories.each do |category|
@@ -23,9 +30,22 @@ class HomeController < ApplicationController
         @sums.push sum
       end
     end
-    puts @sums
+  end
 
+  private
+  def process_account
+    @accounts = []
+    @amounts = []
+    Account.all.each do |account|
+      @accounts.push account.name
+      @amounts.push balance account
+    end
+  end
 
+   private
+   def balance account
+    fund = Fund.current(account.id).first
+    return fund.nil? ? 0 : fund.amount
   end
 
 end
