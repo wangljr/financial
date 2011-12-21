@@ -115,6 +115,14 @@ table.rec_table{
   text-align:right
 }
 
+.float_l{
+ float:left
+}
+
+.float_r{
+  float:right
+}
+
 .center{
       text-align:center;
 }
@@ -173,3 +181,9 @@ input{
   color:$blue
 }
 
+
+.chart{
+  width:100%;
+  height:350px;
+  margin: 4px auto
+}
