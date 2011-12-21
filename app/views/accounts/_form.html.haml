@@ -1,0 +1,25 @@
+= form_for(@account) do |f|
+  %table.rec_table
+    %tr
+      %td.right
+        开户地：
+      %td
+        =f.text_field :location
+    %tr
+      %td.right{:width=>'20%'}
+        %em
+          *
+        名称：
+      %td=f.text_field :name
+
+    %tr
+      %td.right
+        账号：
+      %td
+        =f.text_field :number
+
+    %tr
+      %td
+      %td
+        =f.submit "提交", :class=>'submit'
+
