@@ -43,25 +43,4 @@ module RecordsHelper
     end
     return list
   end
-
-  def income_sum records
-    sum = 0
-    unless records.nil? || records.empty?
-      records.each do |record|
-        sum += income record unless income(record).nil?
-      end
-    end
-    return sum
-  end
-
-  def outlay_sum records
-    sum = 0
-    unless records.nil? || records.empty?
-      records.each do |record|
-        sum += outlay record unless outlay(record).nil?
-      end
-    end
-    return sum
-  end
-
 end
