@@ -1,7 +1,7 @@
 !!! XML
 !!!
 %head
-  %title 家庭财务管理
+  %title=yield :title
   =stylesheet_link_tag "application"
   =javascript_include_tag "application"
   =javascript_include_tag "/My97DatePicker/WdatePicker"
@@ -16,4 +16,6 @@
     #tabs4= render_navigation
     =yield
 
-  #footer
+  #footer.container_12.center
+    %span
+      copyright 2010-2011, Presented by Robert

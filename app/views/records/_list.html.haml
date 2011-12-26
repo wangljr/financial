@@ -2,11 +2,11 @@
   %span #{@month.split('-')[0]}年#{@month.split('-')[1]}月合计
   %div{:style=>'float:right'}
     %span.green
-      收入：#{'￥ ' + income_sum(@records).to_s} &nbsp;&nbsp;
+      收入：#{'￥ ' + @income_sum.to_s} &nbsp;&nbsp;
     %span.red
-      支出：#{'￥ ' + outlay_sum(@records).to_s} &nbsp;&nbsp;
+      支出：#{'￥ ' + @outlay_sum.to_s} &nbsp;&nbsp;
     %span.blue
-      结余：#{'￥ ' + (income_sum(@records) - outlay_sum(@records)).to_s}
+      结余：#{'￥ ' + (@income_sum - @outlay_sum).to_s}
 
 .grid_12
   -unless @records.empty?

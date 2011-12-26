@@ -38,7 +38,7 @@
   function changeCate(id){
     $.ajax({
       url: "/categories/" + id + "/cate",
-      success: function(){
+      success: function(msg){
         //alert("#{@options}")
       }
     });

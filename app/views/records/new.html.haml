@@ -1,3 +1,4 @@
+-content_for :title, '新建账单'
 =javascript_include_tag "records"
 .grid_12
   -unless notice.nil?
@@ -5,7 +6,7 @@
       =image_tag "tick.png"
       %p
         添加记录成功， 点击这里查看
-        =link_to '本月账单', 'javascript:void(0)'
+        =link_to '本月账单', records_path
 
   -if @record.errors.any?
     .eInfo2
