@@ -34,7 +34,7 @@
             =link_to '&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, edit_record_path(record), :class=>'edit', :title => '编辑账单'
             =link_to '&nbsp;&nbsp;&nbsp;&nbsp;'.html_safe, record, :class=>'delete', :title => '删除账单', :method => 'delete', :confirm => '确定删除？'
 
-    = will_paginate @records
+    = will_paginate @records, :previous_label => '上一页', :next_label => '下一页'
 
   -else
     .eInfo
