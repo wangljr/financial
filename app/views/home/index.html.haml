@@ -5,10 +5,10 @@
     %span
       本月支出
     .red{:style=>'float:right'}
-      总计： ￥ #{eval @sums.join('+')}
+      总计： #{number_to_currency((eval @sums.join('+')), :unit => '￥')}
   .grid_6.subtitle
     .blue{:style=>'float:right'}
-      总资产： ￥ #{eval @amounts.join('+')}
+      总资产： #{number_to_currency((eval @amounts.join('+')), :unit => '￥')}
     银行信息
 
 .container_12

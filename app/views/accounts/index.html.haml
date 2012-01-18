@@ -8,7 +8,7 @@
 .grid_12.subtitle
   %div{:style=>'float:right'}
     %span.green
-      总资产： ￥ #{sum @accounts}
+      总资产： #{number_to_currency(sum(@accounts), :unit => '￥')}
 
 
 .grid_12
