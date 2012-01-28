@@ -1,3 +1,31 @@
 // Place all the styles related to the accounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$gray_d:#666;
+
+ul.list{
+  margin-top:8px;
+  list-style:none;
+  width:100%;
+  display:table;
+  .head{
+    font-weight:bold;
+    color: $gray_d
+  }
+
+  li{
+    margin-left:2px;
+    height:28px;
+    display:table-row;
+    span{
+      display:table-cell;
+      text-align:left;
+      vertical-align:middle;
+      padding-left:3px;
+    }
+    &.body{
+      background-color:#F0F8FF;
+    }
+  }
+}
+

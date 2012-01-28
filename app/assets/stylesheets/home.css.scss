@@ -162,6 +162,16 @@ input{
   }
 }
 
+.update{
+  background:url('update.png') no-repeat center;
+  vertical-align:middle;
+  text-decoration:none;
+  &:hover{
+    text-decoration:underline
+  }
+}
+
+
 .delete{
   background:url('delete.png') no-repeat center;
   vertical-align:middle;
@@ -190,4 +200,8 @@ input{
 #footer{
   height:50px;
   padding-top:30px
+}
+
+#main_content{
+  min-height:560px
 }
